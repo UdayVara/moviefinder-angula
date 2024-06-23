@@ -18,8 +18,8 @@
     </div>
   </div>
   <div *ngIf="movieData" class="row mt-4">
-    <div class="offset-lg-1 col-md-5">
-      <img [src]="movieData?.Poster" alt="" class="img-fluid w-full d-block ms-md-auto mx-auto" style="object-fit: contain;height: 100%;">
+    <div class="offset-lg-1 col-md-5 d-flex justify-content-md-end justify-content-center">
+      <img [src]="movieData?.Poster" alt="" class="img-fluid w-full" style="object-fit: contain;height: 100%;">
     </div>
     <div class="col-md-5 mt-md-0 mt-3">
       <h1 style="margin-left: -6px;">Title : {{movieData?.Title}}</h1>
