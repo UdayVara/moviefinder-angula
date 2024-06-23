@@ -1,0 +1,40 @@
+<app-header [bgMode]="bgMode" (changeBg)="updateBgMode()"></app-header>
+
+<div class="container mx-auto mt-5 " [ngClass]="bgMode == 'light'?'text-dark ':'bg-dark text-light'">
+  <div class="input-group my-3 mx-auto" style="max-width: 700px;">
+    <input type="text" [(ngModel)]="query" class="form-control" placeholder="Search Movie Web Series or TV show"
+      aria-label="Search" aria-describedby="button-addon2"
+      [ngClass]="bgMode == 'light' ? 'bg-light' : 'bg-dark text-light'">
+    <button class="btn btn-primary" type="button" id="button-addon2" (click)="searchMovie()">Search</button>
+  </div>
+  <div *ngIf="isError" class=" mt-4 mb-3     alert alert-danger alert-dismissible fade show" role="alert">
+    {{errorMessage}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div *ngIf="isLoading"  class="d-flex justify-content-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="movieData" class="row mt-4">
+    <div class="offset-lg-1 col-md-5">
+      <img [src]="movieData?.Poster" alt="" class="img-fluid w-full" style="object-fit: contain;height: 100%;">
+    </div>
+    <div class="col-md-5">
+      <h1 style="margin-left: -6px;">Title : {{movieData?.Title}}</h1>
+      <h5 class="my-2 ms-1">Type : {{movieData?.Type}}</h5>
+      <h5 class="my-2 ms-1 ">IMDB : {{movieData?.imdbRating}} <span class="text-muted">{{movieData?.imdbVotes}}
+          Votes</span></h5>
+      <h5 class="my-2 ms-1">Genre : {{movieData?.Genre}}</h5>
+      <h5 class="my-2 ms-1">Release Date : {{movieData?.Released}}</h5>
+      <h5 class="my-2 ms-1">Duration : {{movieData?.Runtime}}</h5>
+      <h5 class="my-2 ms-1">Director : {{movieData?.Director}}</h5>
+      <h5 class="my-2 ms-1">Cast : {{movieData?.Actors}}</h5>
+      <h5 class="my-2 ms-1">Countries : {{movieData?.Country}}</h5>
+      <h5 class="my-2 ms-1">Languages : {{movieData?.Language}}</h5>
+      <h5 class="my-2 ms-1">Box Office : {{movieData?.BoxOffice}}</h5>
+      <h6 class="my-2 ms-1">Plot : {{movieData?.Plot}}</h6>
+    </div>
+  </div>
+</div>
